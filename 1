@@ -1,0 +1,71 @@
+
+#  esta faltando i) Será permitido a geração de um arquivo “.csv” com as 12 parcelas do orçamento
+
+print (end="\n\n" "O contrato imobiliário é de R$2.000,00 divididos em até 5 vezes""\n""\n")
+
+escolha =  int(input ("locaçoes:""\n\n""(1) Apartamentos R$700,00 + contrato imobiliário" "\n" "(2) Casa R$900,00 + contrato imobiliário""\n""(3) Estudio R$1200,00 + contrato imobiliário""\n"))
+
+
+print ("\n")
+
+def escolha_valor(escolha):
+
+
+    ap = 700
+    quarto_ap = 0
+    vaga = 0
+    crianças = 0
+
+    casa = 900
+    quarto_casa = 0
+
+    estudio = 1200
+    qnt_vagas = 0
+    valor_vaga = 60
+    vaga_estudio = 0
+
+    #----------------------------------------------------------------------------------------------------------
+
+    if escolha == 1: #Retorna valor final do apartamento
+
+        vaga = int(input(f"(1) Incluir vaga de garagem R${ap} + R$300""\n"f"(2) Nao incluir vaga de garagem R${ap}""\n"))
+        if vaga == 1:
+            ap += 300
+        (print("Oferecemos um desconto de 5% para pessoas sem crianças"))
+        crianças = int(input("(1) Com criança""\n""(2) Sem criança""\n"))
+        if crianças == 2:
+            ap = ap - (ap * 5 / 100)
+    
+        return ap
+    #----------------------------------------------------------------------------------------------------------
+    elif escolha == 2:
+
+        quarto_casa = int(input ("(1) 1 Quarto R$900""\n""(2) 2 Quartos R$900 + R$250""\n"))
+        if quarto_casa == 2:
+            casa += 250
+        vaga = int(input(f"(1) Incluir vaga de garagem R${casa} + R$300""\n"f"(2) Nao incluir vaga de garagem R${casa}""\n"))
+        if vaga == 1:
+            casa += 300
+        return casa
+    #----------------------------------------------------------------------------------------------------------
+    elif escolha == 3:
+          
+        vaga = int(input(f"(1) Nao incluir vaga de garagem R${estudio}""\n"f"(2) Incluir 2 vaga de garagem R${estudio} + R$250""\n"))
+        if vaga == 2:
+            estudio += 250
+            vaga = int(input("(1) Acrescentar mais vagas no valor de R$ 60,00""\n""(2) Nao acrescentar mais vagas""\n"))
+            if vaga == 1:
+                qnt_vagas = int(input("Quantas vagas?""\n"))
+                vaga_estudio = valor_vaga * qnt_vagas
+            estudio += vaga_estudio
+
+        return estudio
+    #----------------------------------------------------------------------------------------------------------
+
+
+
+orçamento = escolha_valor(escolha)
+
+
+print (f"valor do aluguel e R${float(orçamento):.2f} + R$2000 do contrato (em ate 5 vezes)")
+        
